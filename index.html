@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Ajax-enabled Email Verifier</title>
+		<style type="text/css">
+			body{
+				font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+				font-size: 1em;
+				margin: 0;
+				color: #4c4c4c;
+			}
+			p{
+				font-size: .9em;
+				text-align: left;
+				color: #5c5c5c;
+			}
+			#wrapper{
+				margin: 10px auto;
+				width: 600px;
+			}
+			.formRow{
+				width: 540px;
+				height: 32px;
+				border-bottom: 1px solid #CCC;
+				padding-top: 6px;
+			}	
+			.formRow label{
+				display: block;
+				float: left;
+				width: 150px;
+				font-size: .9em;
+			}	
+			.formRow input{
+				display: block;
+				float: left;
+				margin-left: 6px;
+				margin-right: 6px;
+				width: 110px;
+			}
+			.title{
+				font-size: 1.5em;
+				font-family: Georgia, Times, serif;
+			}
+			.divider{
+				width: 100%;
+				height: 1px;
+				color: #CCC;
+				border: thin #CCC;
+			}
+			.errorMessage{
+				width: 520px;
+				background-color: #FCFCFC;
+				padding: 5px 12px;
+				color: #FF3300;
+				font-size: 1.1em;
+			}
+		</style>
+		<!-- jQuery and UI scripts -->
+		<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery/ui/jquery-ui-1.7.1.custom.min.js"></script>
+		<!-- app-specific scripts -->
+		<script type="text/javascript" src="js/email_verifier.js"></script>
+		<script type="text/javascript">
+			
+			/*
+			 * The setup method could be called directly, 
+			 * but it seems safer to ensure that the DOM
+			 * has fully loaded before we call it.  
+			 */ 
+			$( document ).ready(
+				function()
+				{
+					setup( 'email_address', 'error_message');					
+				}
+			);
+			
+		</script>
+	</head>
+	<body>
+		
+		<div id="wrapper">
+			
+			<h1 class="title">
+				Ajax-endabled Email Verification System
+			</h1>
+			
+			<hr class="divider" noshade="true" />
+			
+			<p>
+				The following form is, in most ways, a 'dummy' form. It will not submit to any server-side scripts. The purpose is to make an ajax enabled form
+				that quietly verifies an email address. Verification is a two step process. First, we check the email is properly formatted. Second, we call a 
+				web service that pings the mail server and, if the ping is successful, it will then check is the mail box (i.e., the email address) exists.
+			</p>
+			
+			<form method="post" id="ajaxEmailVerifyForm">
+				
+				<div class="formRow">
+					<label for="first_name">First Name</label>
+					<input type="text" id="first_name" name="first_name" />
+				</div>
+				
+				<div class="formRow">
+					<label for="last_name">Last Name</label>
+					<input type="text" id="last_name" name="last_name" />
+				</div>
+				
+				<div id="error_message" class="errorMessage"></div>
+				
+				<div class="formRow">
+					<label for="email_address">Email Address</label>
+					<input type="text" id="email_address" name="email_address" />
+				</div>
+				
+				<div class="formRow">
+					<label for="phone">Phone</label>
+					<input type="text" id="phone" name="phone" />
+				</div>
+				
+			</form>
+		
+			<div>
+				You can <a href="email.verification.cfml.zip">download</a> the Zip archive of the files used in this example.
+			</div>
+		
+		</div>
+		
+	</body>
+</html>
